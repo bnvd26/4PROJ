@@ -194,4 +194,9 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'user_types' => [
+        'administrator',
+        'student'
+    ]
+
 ];
