@@ -1,0 +1,74 @@
+version: "3"
+services:
+  #PHP Service
+  4proj:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: 4proj
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: 4proj
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - 4proj
+
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "81:80"
+      - "444:443"
+    networks:
+      - 4proj
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: 4proj
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - 4proj
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    networks:
+      - 4proj
+    ports:
+      - 8080:8080
+
+#Docker Networks
+networks:
+  4proj:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
