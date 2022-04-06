@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PlatformAdmin\CampusController;
+use App\Http\Controllers\PlatformAdmin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-    Route::resource('users', UserController::class)->except('destroy');
+    
+    Route::prefix('platform_admin')->group(function () {
+        Route::resource('users', UserController::class)->except('destroy');
+        Route::resource('campuses', CampusController::class)->except('destroy');
+    });
 });

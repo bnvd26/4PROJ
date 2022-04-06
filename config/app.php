@@ -195,7 +195,7 @@ return [
     ])->toArray(),
 
     'user_types' => [
-        'administrator',
+        'platform_administrator',
         'student'
     ]
 
