@@ -19,8 +19,8 @@ Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    
-    Route::prefix('platform_admin')->group(function () {
+
+    Route::prefix('platform_administrator')->group(function () {
         Route::resource('users', UserController::class)->except('destroy');
         Route::resource('campuses', CampusController::class)->except('destroy');
     });
