@@ -61,7 +61,7 @@ services:
     networks:
       - 4proj
     ports:
-      - 8080:8080
+      - 8082:8080
 
 #Docker Networks
 networks:
