@@ -21,7 +21,7 @@
                         <label for="user_type" class="text-black">Type</label>
                         <select class="form-control text-black" id="user_type" name="user_type">
                             @foreach (config('app.user_types') as $key => $type)
-                            <option value="{{ $type }}" >{{ $type }}
+                            <option value="{{ $key }}" >{{ $type }}
                             </option>
                             @endforeach
                         </select>
