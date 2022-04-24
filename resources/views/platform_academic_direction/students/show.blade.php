@@ -19,5 +19,14 @@
         @foreach ($student->subjects as $subject)
             <p>{{ $subject->name }}</p>
         @endforeach
+
+        <h2>Notes Obtenus</h2>
+        @php
+            $gradebook = $student->gradebooks->first();
+        @endphp
+        @foreach ($gradebook->results as $result)
+            <p>Matière : {{ $result->subject->name }}</p>
+            <p>Note obtenue : {{ $result->result }}</p>
+        @endforeach
     </div>
 @endsection

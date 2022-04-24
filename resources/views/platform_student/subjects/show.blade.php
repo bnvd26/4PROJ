@@ -6,19 +6,17 @@
     <h2>Intervenants</h2>
     @php
     use App\Models\Student;
+    $student = Student::where(['user_id' => Auth::user()->id])->first();
     @endphp
-            @foreach ($subject->professors as $professor)
-
-
-
-            <p>Intervenant : <strong>{{ Student::where(['user_id' => Auth::user()->id])->first()->campus }}</strong></p>
-            @endforeach
-
-
+        @foreach ($subject->professors as $professor)
+        <p>Intervenant : <strong>{{ $student->campus }}</strong></p>
+        @endforeach
 
         @foreach ($subject->exams as $exam)
-        @if($exam->activated)
-            @foreach ($exam->questions as $question)
+        {{$student->gradebooks->first()->results->where('subject_id', $exam->subject_id)->first()->passed}}
+
+        @if($exam->activated && $student->gradebooks->first()->results->where('subject_id', $exam->subject_id)->first()->passed)
+        @foreach ($exam->questions as $question)
                 <p>{{ $question->question }}</p>
                 <ul>
                 @foreach ($question->answers as $key => $answer)
@@ -26,6 +24,8 @@
                 @endforeach
                 </ul>
             @endforeach
+        @elseif($exam->activated && !$student->gradebooks->first()->results->where('subject_id', $exam->subject_id)->first()->passed)
+            <a href="{{ route('questions.show', ['exam_id' => $exam->id, 'exam_question' => $exam->questions->first()->id]) }}" class="btn btn-primary">Commencer l'examen</a>
         @endif
         @endforeach
       </table>
