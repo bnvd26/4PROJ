@@ -195,8 +195,18 @@ return [
     ])->toArray(),
 
     'user_types' => [
-        'platform_administrator',
-        'student'
+        'platform_administrator' => 'Administrateur plateforme',
+        'student' => 'Etudiant',
+        'academic_direction' => 'Direction académique',
+        'pedagogy_member' => 'Pédagogie',
+        'administration' => 'Administration'
+    ],
+    'degrees' => [
+        'first' => '1ère année',
+        'second' => '2ème année',
+        'third' => '3ème année',
+        'fourth' => '4ème année',
+        'fifth' => '5ème année',
     ]
 
 ];
