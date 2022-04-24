@@ -17,12 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'type',
-        'password',
-    ];
+    protected $fillable = [];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +44,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //=============================================================================
+    // Accessors
+    //=============================================================================
+
+    /**
+     * Get the formatted customer proposition price.
+     *
+     * @return string
+     */
+    public function getTypeBadgeClassNameAttribute()
+    {
+        $badge = '';
+
+        if($this->type == 'platform_administrator') {
+            $badge = 'badge-secondary';
+        }
+
+        if($this->type == 'student') {
+            $badge = 'badge-primary';
+        }
+
+        return $badge;
+    }
 }

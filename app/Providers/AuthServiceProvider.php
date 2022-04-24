@@ -30,5 +30,17 @@ class AuthServiceProvider extends ServiceProvider
             return $user->type === 'platform_administrator';
         });
 
+        Gate::define('student', function (User $user) {
+            return $user->type === 'student';
+        });
+
+        Gate::define('pedagogy_member', function (User $user) {
+            return $user->type === 'pedagogy_member';
+        });
+
+        Gate::define('academic_direction', function (User $user) {
+            return $user->type === 'academic_direction';
+        });
+
     }
 }

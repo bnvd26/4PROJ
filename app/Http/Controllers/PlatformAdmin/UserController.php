@@ -41,7 +41,7 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
@@ -52,8 +52,27 @@ class UserController extends Controller
             abort(403);
         }
 
-        User::create(['first_name' => $request->first_name, 'last_name' => $request->last_name, 'email' => $request->email, 'type' => $request->user_type, 'password' => bcrypt($request->password)]);
+        User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'type' => $request->user_type,
+            'password' => bcrypt($request->password)
+        ]);
 
-        return redirect()->route('platform_admin.users.index');
+        return redirect()->route('users.index')->with('message','L\'utilisateur a été crée avec succès');;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }

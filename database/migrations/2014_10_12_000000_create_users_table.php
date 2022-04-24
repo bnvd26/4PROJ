@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        User::create(['first_name' => 'John', 'last_name' => 'Doe', 'type' => 'platform_administrator', 'email' => 'admin@supinfo.com', 'password' => '$2y$10$EV4OH8Qb0du07/ZfLfRct.uXrb2qHq0TsfL7El7vIZgy1jy5pSRMC']);
     }
 
     /**
