@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\PlatformAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Campus;
-use App\Models\User;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class CampusController extends Controller
+class PromotionController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -21,9 +20,9 @@ class CampusController extends Controller
             abort(403);
         }
 
-        $campuses = Campus::all();
+        $campuses = Promotion::all();
 
-        return view('platform_admin.campuses.index', compact('campuses'));
+        return view('platform_admin.promotions.index', compact('campuses'));
     }
 
     /**
@@ -37,7 +36,7 @@ class CampusController extends Controller
             abort(403);
         }
 
-        return view('platform_admin.campuses.create');
+        return view('platform_admin.promotions.create');
     }
 
     /**
@@ -53,20 +52,8 @@ class CampusController extends Controller
             abort(403);
         }
 
-        Campus::create(['location' => $request->location, 'street_address' => $request->street_address, 'zipcode' => $request->zipcode]);
+        Promotion::create(['year' => $request->year, 'degree' => $request->degree]);
 
-        return redirect()->route('platform_admin.campuses.index');
-    }
-
-    /**
-    * Display the specified resource.
-    *
-    * @param  \App\Models\Campus  $campus
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function show(Campus $campus)
-    {
-        return view('platform_admin.campuses.show', compact('campus'));
+        return redirect()->route('platform_admin.promotions.index');
     }
 }

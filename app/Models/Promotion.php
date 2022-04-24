@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Campus extends Model
+class Promotion extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -34,33 +34,18 @@ class Campus extends Model
      */
     protected $casts = [];
 
-    public function promotions()
+    public function campuses()
     {
-        return $this->belongsToMany(Promotion::class, 'campus_promotions');
-    }
-
-    public function professors()
-    {
-        return $this->belongsToMany(Professor::class, 'campus_professors');
+        return $this->belongsToMany(Campus::class, 'campus_promotions');
     }
 
     public function students()
     {
-        $students = [];
-
-        foreach($this->promotions as $promotion) {
-            $students[] = $promotion->students;
-        }
-
-        $stu = [];
-
-        foreach($students as $collection_student) {
-            foreach($collection_student as $student) {
-                $stu[] = $student;
-            }
-        }
-
-        return $stu;
+        return $this->hasMany(Student::class);
     }
 
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'promotion_subjects');
+    }
 }

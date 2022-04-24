@@ -8,17 +8,15 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Location</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Code postal</th>
+                <th scope="col">Année</th>
+                <th scope="col">Niveau d'étude</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($campuses as $campus)
+                @foreach ($promotions as $promotion)
                     <tr>
-                        <th scope="row">{{ $campus->location }}</th>
-                        <td>{{ $campus->street_address }}</td>
-                        <td>{{ $campus->zipcode }}</td>
+                        <td>{{ $promotion->year }}</td>
+                        <td>{{ $promotion->degree }}</td>
                     </tr>
                 @endforeach
             </tbody>
