@@ -30,6 +30,7 @@
         <a class="nav-link" href="{{ route('users.index') }}">Utilisateurs</a>
         <a class="nav-link" href="{{ route('campuses.index') }}">Campus</a>
         <a class="nav-link" href="{{ route('professors.index') }}">Intervenants</a>
+        <a class="nav-link" href="{{ route('admin_subjects.index') }}">Sujets</a>
         @endif
         @if (Auth::user()->type == "student")
         <a class="nav-link" href="{{ route('subjects.index') }}">Mes matières</a>

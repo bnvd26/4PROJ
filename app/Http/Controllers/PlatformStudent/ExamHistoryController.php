@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
-class ExamHIstoryController extends Controller
+class ExamHistoryController extends Controller
 {
     /**
     * Display the specified resource.

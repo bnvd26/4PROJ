@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Student extends Model
@@ -34,6 +36,28 @@ class Student extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    protected $appends = ['first_name'];
+
+    /**
+     * Determine if the user is an administrator.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function getFirstNameAttribute()
+    {
+        return Auth::user()->type == 'student' ? Student::find(Auth::user()->id)->user->first_name : '';
+    }
+
+    /**
+     * Determine if the user is an administrator.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function getLastNameAttribute()
+    {
+        return Auth::user()->type == 'student' ? Student::find(Auth::user()->id)->user->last_name : '';
+    }
 
     public function user()
     {
