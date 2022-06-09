@@ -4,7 +4,7 @@
             @section('content')
             <div class="container">
                 <div class="row justify-content-center">
-                    <h1>Create</h1>
+                    <h1>Créer un utilisateur</h1>
             <form action="{{ route('campuses.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="POST">

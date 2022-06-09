@@ -5,13 +5,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Index</h1>
+        <h1>Liste des étudiants</h1>
 
 
         <div class="row">
             <div class="panel panel-default">
             <div class="panel-heading">
-            <h3>Products info </h3>
+       
             </div>
             <div class="panel-body">
             <div class="form-group">

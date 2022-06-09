@@ -2,6 +2,7 @@
 
 @section('content')
 
+<body style="background-color:teal">
 <table class="table">
     <thead>
       <tr>
@@ -17,4 +18,5 @@
         @endforeach
     </tbody>
 </table>
+</body>
 @endsection
