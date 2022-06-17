@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<body style="background-color:teal">
+<body style="background-color:#adb5bd">
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Index</h1>
+        <h1>Liste des professeurs</h1>
         <div class="col-sm-12">
             <a href="{{ route('professors.create') }}" class="btn btn-success">Ajouter un professeur</a>
         </div>

@@ -2,7 +2,7 @@
             @extends('layouts.app')
 
             @section('content')
-            <body style="background-color:teal">
+            <body style="background-color:#adb5bd">
             <div class="container">
                 <div class="row justify-content-center">
                     <h1>Créer un utilisateur</h1>

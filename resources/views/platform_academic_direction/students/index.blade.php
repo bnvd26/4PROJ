@@ -3,6 +3,8 @@
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+
+<body style="background-color:#adb5bd">
 <div class="container">
     <div class="row justify-content-center">
         <h1>Liste des étudiants</h1>
@@ -61,5 +63,6 @@
 
     </div>
 </div>
+</body>
 @endsection
 

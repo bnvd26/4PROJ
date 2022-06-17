@@ -33,10 +33,10 @@
 </div>
 <!-- /#listDelete -->
 
-<body style="background-color:teal">
+<body style="background-color:#adb5bd">
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Users</h1>
+        <h1>Liste des utilisateurs</h1>
 
         <div class="col-sm-12">
             <a href="{{ route('users.create') }}" class="btn btn-success">Créer un utlisateur</a>

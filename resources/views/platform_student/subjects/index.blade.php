@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<body style="background-color:#adb5bd">
 <div class="container">
     <div class="row justify-content-center">
         <h1>Mes matières</h1>
@@ -16,6 +17,7 @@
         @endforeach
     </div>
 </div>
+</body>
 @endsection
 
 

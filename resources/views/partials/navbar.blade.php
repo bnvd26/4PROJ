@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top" style="background-color:light">
+<nav class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top" style="background-color:#343a40">
+<img src="{{ asset('images/supinfo.png') }}" alt="" width="75px">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}

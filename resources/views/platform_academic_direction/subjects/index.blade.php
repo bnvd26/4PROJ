@@ -5,7 +5,7 @@
 <div class="container">
 
 
-
+<body style="background-color:#adb5bd">
 
 
     <div class="row justify-content-center">
@@ -43,6 +43,7 @@
             </script>
     </div>
 </div>
+          </body>
 @endsection
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<body style="background-color:teal">
+<body style="background-color:#adb5bd">
 <table class="table">
     <thead>
       <tr>

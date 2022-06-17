@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<body style="background-color:#adb5bd">
 <div class="container">
     <div class="row justify-content-center">
-        <h1>Index</h1>
+        <h1>Nos Intervenants</h1>
         <table class="table">
             <thead>
               <tr>
@@ -26,5 +27,7 @@
           </table>
     </div>
 </div>
+</body>
+
 @endsection
 

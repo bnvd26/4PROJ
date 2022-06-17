@@ -2,113 +2,326 @@
 
 @section('content')
 
-
-
 <body style="background-color:light">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Tableau de bord') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+<div class="row">
+        <div class="col-12">
+            <div class="card card-chart">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col-sm-6 text-left">                            
+                            <h2 class="card-title">Tableau de bord</h2>
                         </div>
-                    @endif
-
-
-
-                    <svg class="mx-auto my-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-month" viewBox="0 0 16 16">
-  <path d="M2.56 11.332 3.1 9.73h1.984l.54 1.602h.718L4.444 6h-.696L1.85 11.332h.71zm1.544-4.527L4.9 9.18H3.284l.8-2.375h.02zm5.746.422h-.676V9.77c0 .652-.414 1.023-1.004 1.023-.539 0-.98-.246-.98-1.012V7.227h-.676v2.746c0 .941.606 1.425 1.453 1.425.656 0 1.043-.28 1.188-.605h.027v.539h.668V7.227zm2.258 5.046c-.563 0-.91-.304-.985-.636h-.687c.094.683.625 1.199 1.668 1.199.93 0 1.746-.527 1.746-1.578V7.227h-.649v.578h-.019c-.191-.348-.637-.64-1.195-.64-.965 0-1.64.679-1.64 1.886v.34c0 1.23.683 1.902 1.64 1.902.558 0 1.008-.293 1.172-.648h.02v.605c0 .645-.423 1.023-1.071 1.023zm.008-4.53c.648 0 1.062.527 1.062 1.359v.253c0 .848-.39 1.364-1.062 1.364-.692 0-1.098-.512-1.098-1.364v-.253c0-.868.406-1.36 1.098-1.36z"/>
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-</svg>
-
-<div class="container">
-  <div class="row">
-      <div class="col-sm">
-        <div class="card text-bg-primary mb-8" style="max-width: 25rem;">
-          <div class="card-header">Aujourd'hui</div>
-            <div class="card-body">
-              <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="chartBig1"></canvas>
                     </div>
-</div>
-<body style="background-color:gray">
-  <div class="col-sm">
-    <div class="card text-bg-secondary mb-8" style="max-width: 18rem;">
-      <div class="card-header">Demain</div>
-        <div class="card-body">
-          <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-                </div>
-                  </div>
-                  
-                  
-
-
-
-<div class="col-sm">
-  <div class="card text-bg-success mb-8" style="max-width: 18rem;">
-    <div class="card-header">date</div>
-      <div class="card-body">
-        <h5 class="card-title">...</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-              </div>
-                </div>
-                  </div>
-                    </div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="card text-bg-danger mb-8" style="max-width: 18rem;">
-        <div class="card-header">date</div>
-          <div class="card-body">
-            <h5 class="card-title">...</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                  </div>
-                    </div>
-
-
-<div class="col-sm">
-  <div class="card text-bg-warning mb-8" style="max-width: 18rem;">
-    <div class="card-header">date</div>
-      <div class="card-body">
-        <h5 class="card-title">...</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-              </div>
-                </div>
-
-
-<div class="col-sm">
-  <div class="card text-bg-info mb-8" style="max-width: 18rem;">
-    <div class="card-header">date</div>
-      <div class="card-body">
-        <h5 class="card-title">...</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-              </div>
-                </div>
-                  </div>
-                    </div>                
-                    
-
-
-
-
-
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Tâche de la journée </h5>
+                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="chartLinePurple"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Cours à venir</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="CountryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Credit</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="chartLineGreen"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="card card-tasks">
+                <div class="card-header ">
+                    <h6 class="title d-inline">Tâches</h6>
+                    <p class="card-category d-inline">à venir</p>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
+                            <i class="tim-icons icon-settings-gear-63"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#pablo">Action</a>
+                            <a class="dropdown-item" href="#pablo">Another action</a>
+                            <a class="dropdown-item" href="#pablo">Something else</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body ">
+                    <div class="table-full-width table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">4DVST</p>
+                                        <p class="text-muted">Projet : analyse de publications scientifiques</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">4BDAV</p>
+                                        <p class="text-muted">Quizz</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">4DATA</p>
+                                        <p class="text-muted">Graded project </p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">4KUBE</p>
+                                        <p class="text-muted">Quizz</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">4PROJ</p>
+                                        <p class="text-muted">Sujet </p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">4PROJ</p>
+                                        <p class="text-muted">Oral défense</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card ">
+                <div class="card-header">
+                    <h4 class="card-title">Annonces générales</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table tablesorter" id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Professeur
+                                    </th>
+                                    <th>
+                                        Matière
+                                    </th>
+                                    <th>
+                                        Commentaire
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                    Fabre Elise
+                                    </td>
+                                    <td>
+                                    3ASPC
+                                    </td>
+                                    <td>
+                                      ..........
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bigot Richard
+                                    </td>
+                                    <td>
+                                        5DOOP
+                                    </td>
+                                    <td>
+                                        ..........
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Schneider Diane
+                                    </td>
+                                    <td>
+                                        2GRAP
+                                    </td>
+                                    <td>
+                                        ..........
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Lefebvre Philippe
+                                    </td>
+                                    <td>
+                                        1WORK
+                                    </td>
+                                    <td>
+                                        ..........
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        De Sousa Marine
+                                    </td>
+                                    <td>
+                                        2DTTL
+                                    </td>
+                                    <td>
+                                        ..........
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Lacombe	Auguste
+                                    </td>
+                                    <td>
+                                        3CCNA
+                                    </td>
+                                    <td>
+                                        ..........
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Deschamps Frédéric
+                                    </td>
+                                    <td>
+                                        5RBIG
+                                    </td>
+                                    <td>
+                                        ..........
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 @endsection
+
+
+
