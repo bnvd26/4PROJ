@@ -2,6 +2,7 @@
 
 @section('content')
 @foreach ($gradebooks as $gradebook)
+
 <table class="table">
     <thead>
       <tr>
