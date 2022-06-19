@@ -24,7 +24,7 @@ class StudentController extends Controller
             abort(403);
         }
 
-        $students = Student::all();
+        $students = Student::paginate(25);
 
         return view('platform_academic_direction.students.index', compact('students'));
     }
@@ -39,7 +39,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = Student::find($id)->first();
-        
+
         return view('platform_academic_direction.students.show', compact('student'));
     }
 }

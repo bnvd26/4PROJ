@@ -55,7 +55,7 @@ class CampusController extends Controller
 
         Campus::create(['location' => $request->location, 'street_address' => $request->street_address, 'zipcode' => $request->zipcode]);
 
-        return redirect()->route('platform_admin.campuses.index');
+        return redirect()->route('campuses.index');
     }
 
     /**

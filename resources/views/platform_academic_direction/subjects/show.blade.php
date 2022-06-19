@@ -27,8 +27,10 @@
                 </tr>
             @endforeach
         </tbody>
+      </table>
+    {!! $subject->course !!}
 
-        @foreach ($subject->exams as $exam)
+    @foreach ($subject->exams as $exam)
             @foreach ($exam->questions as $question)
                 <p>{{ $question->question }}</p>
                 <ul>
@@ -38,7 +40,5 @@
                 </ul>
             @endforeach
         @endforeach
-      </table>
-    {!! $subject->course !!}
 </div>
 @endsection

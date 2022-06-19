@@ -22,7 +22,7 @@ class SubjectController extends Controller
             abort(403);
         }
 
-        $subjects = Subject::orderBy('name')->get();
+        $subjects = Subject::paginate(25);
 
         return view('platform_admin.subjects.index', compact('subjects'));
     }

@@ -23,7 +23,9 @@ class SubjectController extends Controller
         }
         $current_student = Student::where('user_id', Auth::user()->id)->first();
 
-        $subjects = $current_student->subjects;
+        $subjects = $current_student->subjects();
+
+        $subjects = $subjects->paginate(25);
 
         return view('platform_student.subjects.index', compact('subjects'));
     }

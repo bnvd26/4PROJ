@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campus;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -27,6 +28,10 @@ class HomeController extends Controller
 
         $count_users = count($users);
 
-        return view('dashboard', compact('count_users'));
+        $campuses = Campus::all();
+
+        $count_campus = count($campuses);
+
+        return view('dashboard', compact('count_users', 'count_campus'));
     }
 }

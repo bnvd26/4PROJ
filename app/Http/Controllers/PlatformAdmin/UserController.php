@@ -20,7 +20,7 @@ class UserController extends Controller
             abort(403);
         }
 
-        $users = User::all();
+        $users = User::paginate(25);
 
         return view('platform_admin.users.index', compact('users'));
     }
@@ -41,7 +41,7 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
@@ -74,5 +74,19 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function show(User $user)
+    {
+        if (! Gate::allows('platform_administrator')) {
+            abort(403);
+        }
+
+        return view('platform_admin.users.show', compact('user'));
     }
 }

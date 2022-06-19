@@ -9,6 +9,7 @@ use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class StudentController extends Controller
@@ -26,7 +27,7 @@ class StudentController extends Controller
 
         $pedagogy = PedagogyMember::where('user_id', Auth::user()->id)->first();
 
-        $students = Campus::find($pedagogy->campus_id)->first()->students();
+        $students = DB::table('students')->where('campus_id', $pedagogy->campus_id)->paginate(25);
 
         return view('platform_pedagogy.students.index', compact('students'));
     }
