@@ -22,15 +22,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{ dump($students->items) }}
+
                         @foreach ($students as $student)
-                            {{-- <tr onclick="window.location='{{ route('students.show', ['student' => $student->id]) }}';"
+                            <tr onclick="window.location='{{ route('students.show', ['student' => $student->id]) }}';"
                                 style="cursor:pointer" class="tr-hover">
                                 <th scope="row">{{ $student->campus->location }}</th>
                                 <th scope="row">{{ $student->promotion->year }}</th>
                                 <th scope="row">{{ $student->user->first_name }}</th>
                                 <th scope="row">{{ $student->user->last_name }}</th>
-                                </tr> --}}
+                                </tr>
                         @endforeach
                     </tbody>
                 </table>
