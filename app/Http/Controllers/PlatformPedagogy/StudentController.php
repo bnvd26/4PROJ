@@ -27,7 +27,7 @@ class StudentController extends Controller
 
         $pedagogy = PedagogyMember::where('user_id', Auth::user()->id)->first();
 
-        $students = DB::table('students')->where('campus_id', $pedagogy->campus_id)->paginate(25);
+        $students = Student::paginate(25);
 
         return view('platform_pedagogy.students.index', compact('students'));
     }
