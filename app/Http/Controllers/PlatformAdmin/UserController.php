@@ -25,7 +25,7 @@ class UserController extends Controller
             abort(403);
         }
 
-        $users = User::orderBy('created_at')->paginate(25);
+        $users = User::orderBy('created_at', 'desc')->paginate(25);
 
         return view('platform_admin.users.index', compact('users'));
     }
