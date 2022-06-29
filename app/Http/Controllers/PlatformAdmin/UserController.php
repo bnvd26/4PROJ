@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\PlatformAdmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AcademicDirection;
+use App\Models\Campus;
+use App\Models\PedagogyMember;
+use App\Models\Promotion;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -36,7 +41,11 @@ class UserController extends Controller
             abort(403);
         }
 
-        return view('platform_admin.users.create');
+        $campuses = Campus::all();
+
+        $promotions = Promotion::all();
+
+        return view('platform_admin.users.create', compact('campuses', 'promotions'));
     }
 
     /**
@@ -52,7 +61,7 @@ class UserController extends Controller
             abort(403);
         }
 
-        User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -60,7 +69,29 @@ class UserController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        return redirect()->route('users.index')->with('message','L\'utilisateur a été crée avec succès');;
+        if($request->user_type == 'student') {
+            Student::create([
+                'user_id' => $user->id,
+                'campus_id' => $request->campus,
+                'promotion_id' => $request->promotion
+            ]);
+        }
+
+        if($request->user_type == 'pedagogy_member') {
+            PedagogyMember::create([
+                'user_id' => $user->id,
+                'campus_id' => $request->campus
+            ]);
+        }
+
+        if($request->user_type == 'academic_direction') {
+            AcademicDirection::create([
+                'user_id' => $user->id,
+                'campus_id' => $request->campus
+            ]);
+        }
+
+        return redirect()->route('users.index')->with('message','L\'utilisateur a été crée avec succès');
     }
 
     /**

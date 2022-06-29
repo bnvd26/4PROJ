@@ -207,6 +207,9 @@ return [
         'third' => '3ème année',
         'fourth' => '4ème année',
         'fifth' => '5ème année',
+    ],
+    'promotions' => [
+        '2018', '2019', '2020', '2021', '2022'
     ]
 
 ];
