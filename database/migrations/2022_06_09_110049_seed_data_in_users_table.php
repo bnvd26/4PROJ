@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\AcademicDirection;
+use App\Models\Gradebook;
+use App\Models\GradebookResult;
 use App\Models\PedagogyMember;
 use App\Models\Student;
 use App\Models\User;
@@ -26,13 +28,28 @@ return new class extends Migration
             'password' => '$2y$10$cFOVPf3Da4MdY2SY0imtgOAHMOlazIsdng6QjwgEDp8azLqIBM4Ri'
         ]);
 
-        Student::create([
+        $student = Student::create([
             'user_id' => $user_student->id,
             'promotion_id' => DB::table('promotions')->get()->random()->id,
             'campus_id' => DB::table('campuses')->get()->random()->id,
             'birth_date' => Carbon\Carbon::now()->subYears(rand(18, 26)),
             'internship' => rand(0,1) == 1,
         ]);
+
+
+            $gradebook = Gradebook::create(['student_id' => $student->id]);
+
+            foreach($student->subjects as $subject) {
+                $result = rand(0, 1) == 1 ? 0 : rand(0, 100);
+
+                GradebookResult::create([
+                    'gradebook_id' => $gradebook->id,
+                    'subject_id' => $subject->id,
+                    'result' => $result,
+                    'passed' => $result != 0
+                ]);
+            }
+
 
         $user_academic_direction = User::create([
             'first_name' => 'Gustave',

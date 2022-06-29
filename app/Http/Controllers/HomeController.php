@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campus;
+use App\Models\Student;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,6 +34,16 @@ class HomeController extends Controller
 
         $count_campus = count($campuses);
 
-        return view('dashboard', compact('count_users', 'count_campus'));
+        $student = null;
+
+        $subject = null;
+
+        if(Auth::user()->type == 'student') {
+            $student = Student::where('user_id', Auth::user()->id)->first();
+
+            $subjects = $student->subjects;
+        }
+
+        return view('dashboard', compact('count_users', 'count_campus', 'student', 'subject'));
     }
 }

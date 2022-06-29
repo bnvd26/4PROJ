@@ -35,7 +35,7 @@ return new class extends Migration
                 'last_name' => $faker->lastName,
                 'type' => 'student',
                 'email' => $faker->email,
-                'password' => '$2y$10$cNb4kPIEQ5ThTD90RFuuhOp96qk3EnCGTVkoOC4KER.KQyoocQ7ui'
+                'password' => 'Student10!'
             ]);
 
             Student::create([
